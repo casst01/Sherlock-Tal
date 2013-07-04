@@ -1,0 +1,7 @@
+#simplecarousel .listitem {
+	padding: 20px;
+}
+#simplecarousel .listitem.active {
+	background: #fff;
+	color: #000;
+}
