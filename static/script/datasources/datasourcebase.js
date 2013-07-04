@@ -14,6 +14,13 @@ require.def("sampleapp/datasources/datasourcebase",
             
               xhr.open('GET', url, true);  
               xhr.send(''); 
+            },
+
+            loadJSON: function(url, callback) {
+              this.xhrRequest(url, function(xhr){
+                var json = JSON.parse(xhr.response);
+                callback(json.data);
+              });
             }
 
         });

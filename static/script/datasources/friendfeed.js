@@ -10,10 +10,10 @@ require.def("sampleapp/datasources/friendfeed",
             url: 'https://graph.facebook.com/me/friends',
 
             loadData : function(callbacks) {
-              this.xhrRequest(this.url + '?access_token=' + this.access_token, function(xhr) {
-                var json = JSON.parse(xhr.response);
-                callbacks.onSuccess(json.data);
-              });
+              this.loadJSON(
+                this.url + '?access_token=' + this.access_token, 
+                callbacks.onSuccess
+              );
             }
 
         });
