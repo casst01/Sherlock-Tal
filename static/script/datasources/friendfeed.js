@@ -6,7 +6,7 @@ require.def("sampleapp/datasources/friendfeed",
     function(Class, DatasourceBase) {
         return DatasourceBase.extend({
             
-            access_token: 'CAACEdEose0cBADMbaQrUqmPVyMQDY6ZAj6tvRomfcXg6HkzbZAYNHUrwoIomJwgYg4sylaDFUWoYdxDE3pSMoE0OCZBeOP6tltIPuGuJvFZBHAB3S6ZA2j7qqRurZAK0HOZCWFpwZAmfs5htqclfmIZB6u2ZA66O2gmm4ZD',
+            access_token: 'CAACEdEose0cBAJQnx0rbEeVnC2OI8VlrbQnAkPgGHapkDjqEyAAQPu5hnwnWuwcI36AqX05GQMUuMojlN3iAI5nlcOqJNa5M6i4NYg1mDrTaTqE2HdyTJhZCFAezQoqhG8ybC9UPoWL0Stzbuk6x3cRuRdXQZD',
             url: 'https://graph.facebook.com/me/friends',
 
             loadData : function(callbacks) {

@@ -1,17 +1,12 @@
 require.def("sampleapp/appui/formatters/friendformatter",
     [
         "antie/formatter",
-        "antie/widgets/label",
-        "antie/widgets/button"
+        "sampleapp/appui/widgets/friend"
     ],
-    function(Formatter, Label, Button) {
+    function(Formatter, Friend) {
         return Formatter.extend({
             format : function (iterator) {
-                var button, item;
-                item = iterator.next();
-                button = new Button(item.id);
-                button.appendChildWidget(new Label(item.name));
-                return button;
+                return new Friend(iterator.next());
             }
         });
     }
