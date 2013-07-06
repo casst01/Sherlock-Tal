@@ -10,17 +10,21 @@ require.def("sampleapp/appui/components/simplecarouselcomponent",
     function (Component, DataSource, HorizontalCarousel, FriendFormatter, FriendFeed) {
         return Component.extend({
             init: function() {
-                var simpleFormatter, friendFeed;
                 this._super("simplecarouselcomponent");
-                
-                simpleFormatter = new FriendFormatter();
-                friendFeed = new FriendFeed();
-                this._dataSource = new DataSource(this, friendFeed, "loadData");
-                
-                this._carousel = new HorizontalCarousel("simplecarousel", simpleFormatter);
-                this.appendChildWidget(this._carousel);
-
                 this._addEventListeners();
+
+                this._dataSource = new DataSource(
+                    this,
+                    new FriendFeed(this.getCurrentApplication().getProp('access_token')),
+                    "loadData"
+                );
+                
+                this._carousel = new HorizontalCarousel(
+                    "simplecarousel",
+                    new FriendFormatter()
+                );
+
+                this.appendChildWidget(this._carousel);
             },
 
             _addEventListeners: function(){

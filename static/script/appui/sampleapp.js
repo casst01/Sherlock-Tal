@@ -20,6 +20,9 @@ require.def('sampleapp/appui/sampleapp',
 					self.setRootWidget(container);
 				}
 
+				self._props = [];
+				self._props['access_token'] = 'CAACEdEose0cBAKpWXT91oE6wykofTSaZCNASxZBGDJeZC514gzph8fD9t0C9i7GGetLq7GsXhOH0Pv0dR6yJYZCZBKHEgMMsGuZBmSZCFZCXPxYUY1vNi7WsQ1m7kM0Qd4ZClWiHjkKKoUXLY5jD7luKnPZAkP6lZAFERkZD';
+
 			},
 
 			run: function() {
@@ -30,6 +33,10 @@ require.def('sampleapp/appui/sampleapp',
 				this._mainController = new MainController(this);
 				this._mainController.route(route);
 				this.ready();
+			},
+
+			getProp: function (propName) {
+				return this._props[propName] || null;
 			}
 
 		});
