@@ -28,10 +28,6 @@ require.def("sampleapp/appui/components/simplecarouselcomponent",
                 this.addEventListener("beforerender", function(ev) {  
                     self._onBeforeRender(ev); 
                 });
-                this.addEventListener('aftershow', function appReady(ev) {
-                    self.getCurrentApplication().ready();
-                    self.removeEventListener('aftershow', appReady);
-                });
                 this.addEventListener('focus', self._onFocus);
             },
 

@@ -1,10 +1,11 @@
 require.def('sampleapp/appui/sampleapp',
 	[
 		'antie/application',
-		'antie/widgets/container'
+		'antie/widgets/container',
+		'sampleapp/controllers/maincontroller'
 	],
 
-	function(Application, Container) {
+	function(Application, Container, MainController) {
 
 		return Application.extend({
 			
@@ -23,7 +24,12 @@ require.def('sampleapp/appui/sampleapp',
 
 			run: function() {
 				this._setRootContainer();
-				this.addComponentContainer("maincontainer", "sampleapp/appui/components/simplecarouselcomponent");
+			},
+
+			route: function(route) {
+				this._mainController = new MainController(this);
+				this._mainController.route(route);
+				this.ready();
 			}
 
 		});
