@@ -15,7 +15,7 @@ require.def("sampleapp/appui/components/simplecarouselcomponent",
 
                 this._dataSource = new DataSource(
                     this,
-                    new FriendFeed(this.getCurrentApplication().getProp('access_token')),
+                    new FriendFeed(this.getCurrentApplication().getAccessToken()),
                     "loadData"
                 );
                 

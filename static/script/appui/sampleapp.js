@@ -2,27 +2,24 @@ require.def('sampleapp/appui/sampleapp',
 	[
 		'antie/application',
 		'antie/widgets/container',
-		'sampleapp/controllers/maincontroller'
+		'sampleapp/controllers/maincontroller',
+		'sampleapp/lib/facebook'
 	],
 
-	function(Application, Container, MainController) {
+	function(Application, Container, MainController, FB) {
 
 		return Application.extend({
 			
 			init: function (appDiv, styleDir, imgDir, callback) {
-
 				var self = this;
 				self._super(appDiv, styleDir, imgDir, callback);
+				self._fb = new FB('407261462723217', 'http://app1.tal.com');
 
 				self._setRootContainer = function() {
 					var container = new Container();
 					container.outputElement = appDiv;
 					self.setRootWidget(container);
 				}
-
-				self._props = [];
-				self._props['access_token'] = 'CAACEdEose0cBAKpWXT91oE6wykofTSaZCNASxZBGDJeZC514gzph8fD9t0C9i7GGetLq7GsXhOH0Pv0dR6yJYZCZBKHEgMMsGuZBmSZCFZCXPxYUY1vNi7WsQ1m7kM0Qd4ZClWiHjkKKoUXLY5jD7luKnPZAkP6lZAFERkZD';
-
 			},
 
 			run: function() {
@@ -30,14 +27,31 @@ require.def('sampleapp/appui/sampleapp',
 			},
 
 			route: function(route) {
+				if(!this._accessToken) {
+					if(this._routeContainsAccessToken(route)) {
+						this._fb._parseAccessToken(route[0]);
+						this._accessToken = this._fb.getAccessToken();
+					} else {
+						this._fb.redirect();
+					}
+				}
+
 				this._mainController = new MainController(this);
 				this._mainController.route(route);
 				this.ready();
 			},
 
-			getProp: function (propName) {
-				return this._props[propName] || null;
-			}
+			getAccessToken: function () {
+				return this._accessToken;
+			},
+
+			_routeContainsAccessToken: function(route) {
+				if(route.length > 0) {
+					return route[0].indexOf('access_token') > -1;
+				} else {
+					return false;
+				}
+			},
 
 		});
 

@@ -19,7 +19,7 @@ require.def("sampleapp/datasources/facebookdatasource",
             },
 
             _getAccessToken: function () {
-				return this.accessToken || '';
+				return this.accessToken.token || '';
             },
 
             _getUrl: function () {
