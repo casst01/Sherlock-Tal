@@ -1,4 +1,4 @@
-require.def("sampleapp/appui/widgets/friend",
+require.def("sampleapp/appui/widgets/facebook/friend",
     [
         "antie/widgets/button",
         "antie/widgets/label",

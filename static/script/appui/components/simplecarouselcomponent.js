@@ -3,11 +3,11 @@ require.def("sampleapp/appui/components/simplecarouselcomponent",
         "antie/widgets/component",
         "antie/datasource",
         "antie/widgets/horizontalcarousel",
-        "sampleapp/appui/formatters/friendformatter",
-        "sampleapp/datasources/friendfeed"
+        "sampleapp/appui/formatters/facebook/friendformatter",
+        "sampleapp/datasources/facebook/friends"
 
     ],
-    function (Component, DataSource, HorizontalCarousel, FriendFormatter, FriendFeed) {
+    function (Component, DataSource, HorizontalCarousel, FriendFormatter, FacebookFriends) {
         return Component.extend({
             init: function() {
                 this._super("simplecarouselcomponent");
@@ -15,7 +15,7 @@ require.def("sampleapp/appui/components/simplecarouselcomponent",
 
                 this._dataSource = new DataSource(
                     this,
-                    new FriendFeed(this.getCurrentApplication().getAccessToken()),
+                    new FacebookFriends(this.getCurrentApplication().getAccessToken()),
                     "loadData"
                 );
                 

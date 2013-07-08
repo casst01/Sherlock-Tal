@@ -1,4 +1,4 @@
-require.def("sampleapp/datasources/facebookdatasource",
+require.def("sampleapp/datasources/facebook/base",
     [
         "antie/class",
         "sampleapp/datasources/datasourcebase"

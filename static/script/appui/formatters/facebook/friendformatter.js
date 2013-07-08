@@ -1,7 +1,7 @@
-require.def("sampleapp/appui/formatters/friendformatter",
+require.def("sampleapp/appui/formatters/facebook/friendformatter",
     [
         "antie/formatter",
-        "sampleapp/appui/widgets/friend"
+        "sampleapp/appui/widgets/facebook/friend"
     ],
     function(Formatter, Friend) {
         return Formatter.extend({
