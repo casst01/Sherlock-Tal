@@ -47,7 +47,8 @@ require.def("sampleapp/lib/facebook",
 					var value = params[key];
 					qs += encodeURIComponent(key) + "=" + encodeURIComponent(value) + "&";
 				}
-				return qs;
+				var permissions = 'scope=' + this._permissions.join(',');
+				return qs + permissions;
 			},
 
 			_parseAccessToken: function (accessTokenString) {

@@ -16,7 +16,8 @@ require.def("sampleapp/controllers/maincontroller",
             },
 
             index: function () {
-                this._application.addComponentContainer("maincontainer", "sampleapp/appui/components/simplecarouselcomponent");
+                this._application.addComponentContainer("maincontainer", "sampleapp/appui/components/facebook/friendscarouselcomponent");
+                // this._application.addComponentContainer("albumscontainer", "sampleapp/appui/components/facebook/albumscarouselcomponent");
             },
 
             _sanitizeRoute: function (route) {

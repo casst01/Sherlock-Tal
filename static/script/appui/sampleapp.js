@@ -13,7 +13,7 @@ require.def('sampleapp/appui/sampleapp',
 			init: function (appDiv, styleDir, imgDir, callback) {
 				var self = this;
 				self._super(appDiv, styleDir, imgDir, callback);
-				self._fb = new FB('407261462723217', 'http://app1.tal.com');
+				self._fb = new FB('407261462723217', 'http://app1.tal.com', ['user_photos']);
 
 				self._setRootContainer = function() {
 					var container = new Container();

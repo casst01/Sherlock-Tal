@@ -1,7 +1,9 @@
-#simplecarousel .listitem {
+#albumscarousel .listitem,
+#friendscarousel .listitem {
 	padding: 20px;
 }
-#simplecarousel .listitem.active {
+#albumscarousel .listitem.active,
+#friendscarousel .listitem.active {
 	background: #fff;
 	color: #000;
 }
