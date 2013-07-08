@@ -27,10 +27,9 @@ require.def('sampleapp/appui/sampleapp',
 			},
 
 			route: function(route) {
-				if(!this._accessToken) {
+				if(!this._fb.hasAccessToken()) {
 					if(this._routeContainsAccessToken(route)) {
 						this._fb._parseAccessToken(route[0]);
-						this._accessToken = this._fb.getAccessToken();
 					} else {
 						this._fb.redirect();
 					}
@@ -42,7 +41,7 @@ require.def('sampleapp/appui/sampleapp',
 			},
 
 			getAccessToken: function () {
-				return this._accessToken;
+				return this._fb.getAccessToken();
 			},
 
 			_routeContainsAccessToken: function(route) {
