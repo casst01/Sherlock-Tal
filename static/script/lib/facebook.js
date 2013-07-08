@@ -23,7 +23,7 @@ require.def("sampleapp/lib/facebook",
 
 			hasAccessToken: function() {
 				return (this._accessToken) ? true : false;
-			}
+			},
 
 			_getRedirectUrl: function () {
 				if(!this._redirectUrl) {
