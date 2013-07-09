@@ -1,23 +1,33 @@
 require.def("sampleapp/controllers/maincontroller",
     [
         "antie/class",
+        "sampleapp/controllers/indexcontroller"
     ],
-    function(Class) {
+    function(Class, IndexController) {
         return Class.extend({
 
             init: function (application) {
                 this._application = application;
+
+                this._controllerClasses = {
+                    'index' : IndexController
+                };
+
+                this._controllers = [];
             },
 
             route: function(route) {
                 var route = this._sanitizeRoute(route);
-                var queryParams = this._getQueryParams();
-                this.index();
+                var controller = this._instantiateController(route[0]);
+                controller.index();
             },
 
-            index: function () {
-                this._application.addComponentContainer("maincontainer", "sampleapp/appui/components/facebook/friendscarouselcomponent");
-                // this._application.addComponentContainer("albumscontainer", "sampleapp/appui/components/facebook/albumscarouselcomponent");
+            _instantiateController: function (name) {
+                if(!this._controllers[name]) {
+                    var ControllerClass = this._controllerClasses[name];
+                    this._controllers[name] = new ControllerClass(this._application);
+                }
+                return this._controllers[name];
             },
 
             _sanitizeRoute: function (route) {
@@ -26,12 +36,6 @@ require.def("sampleapp/controllers/maincontroller",
                 } else {
                     return route;
                 }
-            },
-
-            _getQueryParams: function () {
-                return {
-                    "id" : "12345"
-                };
             }
 
         });

@@ -6,7 +6,6 @@ require.def("sampleapp/appui/formatters/facebook/albumformatter",
     function(Formatter, Album) {
         return Formatter.extend({
             format : function (iterator) {
-                console.log(iterator.peek());
                 return new Album(iterator.next());
             }
         });

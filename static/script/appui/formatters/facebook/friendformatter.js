@@ -6,7 +6,6 @@ require.def("sampleapp/appui/formatters/facebook/friendformatter",
     function(Formatter, Friend) {
         return Formatter.extend({
             format : function (iterator) {
-                console.log(iterator.peek());
                 return new Friend(iterator.next());
             }
         });
