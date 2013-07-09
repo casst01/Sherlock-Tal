@@ -18,8 +18,8 @@ require.def("sampleapp/controllers/maincontroller",
 
             route: function(route) {
                 var route = this._sanitizeRoute(route);
-                var controller = this._instantiateController(route[0]);
-                controller.index();
+                var controller = this._instantiateController(route.controller);
+                controller[route.action].apply(controller, []);
             },
 
             _instantiateController: function (name) {
@@ -31,10 +31,14 @@ require.def("sampleapp/controllers/maincontroller",
             },
 
             _sanitizeRoute: function (route) {
+                var params = route;
                 if(route.length <= 0) {
-                    return ['index', 'index'];
-                } else {
-                    return route;
+                    params = ['index', 'index'];
+                }
+
+                return {
+                    'controller' : params[0],
+                    'action': params[1]
                 }
             }
 

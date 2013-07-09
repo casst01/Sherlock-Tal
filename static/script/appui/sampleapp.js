@@ -30,7 +30,7 @@ require.def('sampleapp/appui/sampleapp',
 				if(!this._fb.hasAccessToken()) {
 					if(this._routeContainsAccessToken(route)) {
 						this._fb._parseAccessToken(route[0]);
-						this.getDevice().setCurrentRoute([]);
+						this.getDevice().setCurrentRoute(['index', 'index']);
 					} else {
 						this._fb.redirect();
 					}
