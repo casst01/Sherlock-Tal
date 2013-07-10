@@ -72,7 +72,7 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
         var require = {
             baseUrl: "",
             paths: {
-                <?php echo $application_id; ?>: 'static/script',
+                <?php echo $application_id; ?>: 'webapp/static/script',
                 antie : "antie/static/script"
             },
             priority: [],
@@ -84,7 +84,7 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
     <script type="text/javascript" src="antie/static/script/lib/require.js"></script>
 
     <!-- Load application base style sheet -->
-    <link rel="stylesheet" href="static/style/base.css"/>
+    <link rel="stylesheet" href="webapp/static/style/base.css"/>
 
     <!-- Expose device config to framework -->
     <script>
@@ -130,8 +130,8 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
 
                     new SampleApp(
                             document.getElementById('app'),
-                            'static/style/',
-                            'static/img/',
+                            'webapp/static/style/',
+                            'webapp/static/img/',
                             onReady
                     );
                 });
