@@ -8,9 +8,10 @@ require.def("sampleapp/appui/widgets/facebook/album",
         return Button.extend({
 
             init : function (dataItem) {
-                var id = 'album-' + dataItem.id;
+                var id = dataItem.id;
                 this._super(id);
                 this.setDataItem(dataItem);
+                this.addClass('album');
                 this.appendChildWidget(new Label(dataItem.name));
                 this.appendChildWidget(new Image(id + 'photo', this._getCoverPhotoUrl(), { width:100, height: 100}));
             },

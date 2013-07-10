@@ -8,9 +8,10 @@ require.def("sampleapp/appui/widgets/facebook/friend",
         return Button.extend({
 
             init : function (dataItem) {
-                var id = 'friend-' + dataItem.id;
+                var id = dataItem.id;
                 this._super(id);
                 this.setDataItem(dataItem);
+                this.addClass('friend');
                 this.appendChildWidget(new Label(dataItem.name));
                 this.appendChildWidget(new Image(id + 'photo', this._getProfileImageUrl(), { width:100, height: 100}));
             },
