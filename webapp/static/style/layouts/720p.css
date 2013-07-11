@@ -2,8 +2,8 @@
 #friendscarousel .listitem {
 	padding: 20px;
 }
-#albumscarousel .listitem.active,
-#friendscarousel .listitem.active {
+#albumscarousel .listitem.active.focus,
+#friendscarousel .listitem.active.focus {
 	background: #fff;
 	color: #000;
 }
