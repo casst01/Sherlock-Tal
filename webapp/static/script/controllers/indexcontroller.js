@@ -14,8 +14,9 @@ require.def("sampleapp/controllers/indexcontroller",
                 var frame = new Frame('indexFrame');
                 frame.addComponentContainer('topContainer');
                 frame.addComponentContainer('bottomContainer');
-                frame.showComponent('topContainer', "sampleapp/appui/components/facebook/friendscarouselcomponent");
                 this._application._rootWidget.appendChildWidget(frame);
+
+                frame.showComponent('topContainer', "sampleapp/appui/components/facebook/friendscarouselcomponent");
 
                 var self = this;
                 frame.getComponentContainer('topContainer').addEventListener('databound', function() {
@@ -25,6 +26,6 @@ require.def("sampleapp/controllers/indexcontroller",
                     frame.showComponent('bottomContainer', "sampleapp/appui/components/facebook/albumscarouselcomponent");
                 });
             }
-
         });
-    });
+    }
+);
