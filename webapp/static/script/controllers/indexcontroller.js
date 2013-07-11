@@ -1,8 +1,9 @@
 require.def("sampleapp/controllers/indexcontroller",
     [
         "antie/class",
+        "sampleapp/appui/widgets/frame"
     ],
-    function(Class) {
+    function(Class, Frame) {
         return Class.extend({
 
             init: function (application) {
@@ -10,8 +11,10 @@ require.def("sampleapp/controllers/indexcontroller",
             },
 
             index: function () {
-                this._topContainer = this._application.addComponentContainer("topContainer");
-                this._topContainer.show("sampleapp/appui/components/facebook/friendscarouselcomponent");
+                var frame = new Frame('indexFrame');
+                frame.addComponentContainer('topContainer');
+                frame.showComponent('topContainer', "sampleapp/appui/components/facebook/friendscarouselcomponent");
+                this._application._rootWidget.appendChildWidget(frame);
             }
 
         });
