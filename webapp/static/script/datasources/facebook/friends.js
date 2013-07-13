@@ -8,8 +8,8 @@ require.def("sampleapp/datasources/facebook/friends",
 
             url: 'https://graph.facebook.com/me/friends',
 
-            init: function(accessToken) {
-                this._super(accessToken, this.url);
+            init: function(args) {
+                this._super(args.accessToken, this.url);
             }
 
         });

@@ -3,11 +3,12 @@ require.def("sampleapp/controllers/indexcontroller",
         "antie/class",
         "sampleapp/appui/widgets/frame"
     ],
-    function(Class, Frame) {
+    function(Class, Frame, DataSourceManager) {
         return Class.extend({
 
-            init: function (application) {
-                this._application = application;
+            init: function (args) {
+                this._application = args.application;
+                this._dataSourceManager = args.dataSourceManager;
             },
 
             index: function () {
@@ -20,7 +21,8 @@ require.def("sampleapp/controllers/indexcontroller",
                     frame.setActiveChildWidget(frame.getComponentContainer('albumsContainer'));
                 });
                 frame.getComponentContainer('albumsContainer').addEventListener('select', function() {
-                    frame.showComponent('albumPhotosContainer', "sampleapp/appui/components/facebook/albumphotoscarouselcomponent");
+                    var albumPhotosDataSource = self._dataSourceManager.get('albumphotos', { accessToken: self._application.getAccessToken() });
+                    frame.showComponent('albumPhotosContainer', "sampleapp/appui/components/facebook/albumphotoscarouselcomponent", { dataSource: albumPhotosDataSource });
                 });
 
                 frame.getComponentContainer('albumPhotosContainer').addEventListener('databound', function() {
@@ -28,8 +30,11 @@ require.def("sampleapp/controllers/indexcontroller",
                 });
 
                 this._application._rootWidget.appendChildWidget(frame);
-                frame.showComponent('albumsContainer', "sampleapp/appui/components/facebook/albumscarouselcomponent");
+
+                var albumsDataSource = this._dataSourceManager.get('albums', { accessToken: this._application.getAccessToken() });
+                frame.showComponent('albumsContainer', "sampleapp/appui/components/facebook/albumscarouselcomponent", { dataSource: albumsDataSource });
             }
+
         });
     }
 );

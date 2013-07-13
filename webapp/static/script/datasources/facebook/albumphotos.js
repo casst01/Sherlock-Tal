@@ -8,8 +8,8 @@ require.def("sampleapp/datasources/facebook/albumphotos",
 
             url: 'https://graph.facebook.com/18812320576/photos',
 
-            init: function(accessToken) {
-                this._super(accessToken, this.url);
+            init: function(args) {
+                this._super(args.accessToken, this.url);
                 this._albumId = null;
             },
 

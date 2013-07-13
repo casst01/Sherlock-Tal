@@ -3,10 +3,11 @@ require.def('sampleapp/appui/sampleapp',
 		'antie/application',
 		'antie/widgets/container',
 		'sampleapp/controllers/maincontroller',
-		'sampleapp/lib/facebook'
+		'sampleapp/lib/facebook',
+		'sampleapp/models/datasourcemanager'
 	],
 
-	function(Application, Container, MainController, FB) {
+	function(Application, Container, MainController, FB, DataSourceManager) {
 
 		return Application.extend({
 			
@@ -32,7 +33,11 @@ require.def('sampleapp/appui/sampleapp',
 					}
 				}
 
-				this._mainController = new MainController(this);
+				var args = {
+					application: this,
+					dataSourceManager: new DataSourceManager()
+				}
+				this._mainController = new MainController(args);
 				this._mainController.route(this.getDevice().getCurrentRoute());
 				this.ready();
 			},

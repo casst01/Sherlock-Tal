@@ -1,24 +1,16 @@
 require.def("sampleapp/appui/components/facebook/friendscarouselcomponent",
     [
         "antie/widgets/component",
-        "antie/datasource",
         "antie/widgets/horizontalcarousel",
-        "sampleapp/appui/formatters/facebook/friendformatter",
-        "sampleapp/datasources/facebook/friends"
+        "sampleapp/appui/formatters/facebook/friendformatter"
 
     ],
-    function (Component, DataSource, HorizontalCarousel, FriendFormatter, FacebookFriends) {
+    function (Component, HorizontalCarousel, FriendFormatter) {
         return Component.extend({
             init: function() {
                 this._super("friendscarouselcomponent");
                 this._addEventListeners();
 
-                this._dataSource = new DataSource(
-                    this,
-                    new FacebookFriends(this.getCurrentApplication().getAccessToken()),
-                    "loadData"
-                );
-                
                 this._carousel = new HorizontalCarousel(
                     "friendscarousel",
                     new FriendFormatter()
@@ -36,8 +28,7 @@ require.def("sampleapp/appui/components/facebook/friendscarouselcomponent",
             },
 
             _onBeforeRender: function(ev) {
-                // do the bind (and build the carousel's items)
-                this._carousel.setDataSource(this._dataSource);
+                this._carousel.setDataSource(ev.args.dataSource);
             },
 
             _onFocus: function(ev) {

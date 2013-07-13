@@ -18,8 +18,8 @@ require.def("sampleapp/appui/widgets/frame",
                 return this;
             },
 
-            showComponent: function (componentContainerId, componentRequirePath) {
-                this._componentContainers[componentContainerId].show(componentRequirePath);
+            showComponent: function (componentContainerId, componentRequirePath, args) {
+                this._componentContainers[componentContainerId].show(componentRequirePath, args || {});
             },
 
             getComponentContainer: function (componentContainerId) {

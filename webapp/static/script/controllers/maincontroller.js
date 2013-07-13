@@ -6,8 +6,9 @@ require.def("sampleapp/controllers/maincontroller",
     function(Class, IndexController) {
         return Class.extend({
 
-            init: function (application) {
-                this._application = application;
+            init: function (args) {
+                this._application = args.application;
+                this._dataSourceManager = args.dataSourceManager;
 
                 this._controllerClasses = {
                     'index' : IndexController
@@ -25,7 +26,11 @@ require.def("sampleapp/controllers/maincontroller",
             _instantiateController: function (name) {
                 if(!this._controllers[name]) {
                     var ControllerClass = this._controllerClasses[name];
-                    this._controllers[name] = new ControllerClass(this._application);
+                    var args = {
+                        application: this._application,
+                        dataSourceManager: this._dataSourceManager
+                    }
+                    this._controllers[name] = new ControllerClass(args);
                 }
                 return this._controllers[name];
             },
