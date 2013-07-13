@@ -13,10 +13,18 @@ require.def("sampleapp/controllers/indexcontroller",
             index: function () {
                 var self = this;
                 var frame = new Frame('indexFrame')
-                                .addComponentContainer('albumsContainer');
+                                .addComponentContainer('albumsContainer')
+                                .addComponentContainer('albumPhotosContainer');
                 
                 frame.getComponentContainer('albumsContainer').addEventListener('databound', function() {
                     frame.setActiveChildWidget(frame.getComponentContainer('albumsContainer'));
+                });
+                frame.getComponentContainer('albumsContainer').addEventListener('select', function() {
+                    frame.showComponent('albumPhotosContainer', "sampleapp/appui/components/facebook/albumphotoscarouselcomponent");
+                });
+
+                frame.getComponentContainer('albumPhotosContainer').addEventListener('databound', function() {
+                    frame.setActiveChildWidget(frame.getComponentContainer('albumPhotosContainer'));
                 });
 
                 this._application._rootWidget.appendChildWidget(frame);
