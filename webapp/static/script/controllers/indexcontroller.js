@@ -20,10 +20,13 @@ require.def("sampleapp/controllers/indexcontroller",
 
                 var self = this;
                 frame.getComponentContainer('topContainer').addEventListener('databound', function() {
-                    self._application._rootWidget.setActiveChildWidget(frame.getComponentContainer('topContainer'));
+                    frame.setActiveChildWidget(frame.getComponentContainer('topContainer'));
                 });
                 frame.getComponentContainer('topContainer').addEventListener('select', function() {
                     frame.showComponent('bottomContainer', "sampleapp/appui/components/facebook/albumscarouselcomponent");
+                });
+                frame.getComponentContainer('bottomContainer').addEventListener('databound', function() {
+                    frame.setActiveChildWidget(frame.getComponentContainer('bottomContainer'));
                 });
             }
         });
