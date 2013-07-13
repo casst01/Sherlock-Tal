@@ -15,6 +15,7 @@ require.def("sampleapp/appui/widgets/frame",
             addComponentContainer: function (componentContainerId) {
                 this._componentContainers[componentContainerId] = new ComponentContainer(componentContainerId);
                 this.appendChildWidget(this._componentContainers[componentContainerId]);
+                return this;
             },
 
             showComponent: function (componentContainerId, componentRequirePath) {
