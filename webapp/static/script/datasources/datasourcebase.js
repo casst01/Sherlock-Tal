@@ -1,27 +1,14 @@
 require.def("sampleapp/datasources/datasourcebase",
     [
-        "antie/class"
+        "antie/datasource"
     ],
-    function(Class) {
-        return Class.extend({
+    function(DataSource) {
+        return DataSource.extend({
 
-            xhrRequest: function(url, callback) {
-              xhr = new XMLHttpRequest();
-              xhr.onreadystatechange = function() {  
-                if((xhr.readyState < 4) || xhr.status !== 200) return;  
-                callback(xhr);  
-              };  
-            
-              xhr.open('GET', url, true);  
-              xhr.send(''); 
-            },
-
-            loadJSON: function(url, callback) {
-              this.xhrRequest(url, function(xhr){
-                var json = JSON.parse(xhr.response);
-                callback(json.data);
-              });
-            }
+          init: function(component, obj, func, args, dataSourceId) {
+            args = args || [];
+            this._super(component, obj, func, args.concat([dataSourceId]));
+          }
 
         });
     });

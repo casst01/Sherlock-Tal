@@ -27,10 +27,9 @@ require.def("sampleapp/models/datasourcemanager",
 
                 var DataSourceClass = this._dataSourceClasses[dataSourceId];
                 if (DataSourceClass) {
-                    
-                    var dataSourceObject = new DataSourceClass(args || {});
-                    dataSource = new DataSource(
-                        component, dataSourceObject, "loadData"
+
+                    dataSource = new DataSourceClass(
+                        component, this, "_loadData", args
                     );
 
                     this._dataSources[dataSourceId] = dataSource;
@@ -40,6 +39,29 @@ require.def("sampleapp/models/datasourcemanager",
                 else {
                     return null;
                 }
+            },
+
+            _loadData : function(callbacks, dataSourceId) {
+              var dataSource = this._dataSources[dataSourceId];    
+              this._loadJSON(dataSource.url, callbacks.onSuccess);
+            },
+
+            _loadJSON: function(url, callback) {
+                this._xhrRequest(url, function(xhr){
+                  var json = JSON.parse(xhr.response);
+                  callback(json.data);
+                });
+            },
+
+            _xhrRequest: function(url, callback) {
+                xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {  
+                  if((xhr.readyState < 4) || xhr.status !== 200) return;  
+                  callback(xhr);  
+                };  
+              
+                xhr.open('GET', url, true);  
+                xhr.send(''); 
             }
 
         });

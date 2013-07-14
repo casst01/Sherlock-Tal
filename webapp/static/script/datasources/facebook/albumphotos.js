@@ -8,21 +8,13 @@ require.def("sampleapp/datasources/facebook/albumphotos",
 
             url: 'https://graph.facebook.com/18812320576/photos',
 
-            init: function(args) {
-                this._super(args.accessToken, this.url);
-                this._albumId = null;
+            init: function(component, obj, func, args) {
+                this._super(component, obj, func, args, 'albumphotos');
             },
 
             setAlbumId: function(albumId) {
                 this._albumId = albumId;
             }
-
-            // loadData: function(callbacks) {
-            //     this._fillUrlParams({
-            //         albumId: this._albumId
-            //     });
-            //     this._super(callbacks);
-            // }
 
         });
     }

@@ -4,7 +4,7 @@ require.def('sampleapp/appui/sampleapp',
 		'antie/widgets/container',
 		'sampleapp/controllers/maincontroller',
 		'sampleapp/lib/facebook',
-		'sampleapp/models/datasourcemanager'
+		'sampleapp/models/facebookdatasourcemanager'
 	],
 
 	function(Application, Container, MainController, FB, DataSourceManager) {
@@ -35,7 +35,7 @@ require.def('sampleapp/appui/sampleapp',
 
 				var args = {
 					application: this,
-					dataSourceManager: new DataSourceManager()
+					dataSourceManager: new DataSourceManager({ accessToken: this.getAccessToken()})
 				}
 				this._mainController = new MainController(args);
 				this._mainController.route(this.getDevice().getCurrentRoute());
