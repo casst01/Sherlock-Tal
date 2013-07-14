@@ -55,9 +55,14 @@ Now that the code is checked out you will need to update `index.php` with your F
 / Dynamic Parameters in Datasources
 / Passing Arguments to components for use in ComponentEvents
 / FacebookDataSourceManager to auto pass through accessToken as arg
-- Datasource not reloading after setParam()
+/ Datasource not reloading after setParam()
+- Move facebook datsources from datasourcemanager to facebookdatasource manager
+- CSS + polish
+- Dummy FB Account for demo
 
 # What this base project doesnt do..
 - Deal with peristing access token
 - Deal with access token expiry
 
+# Caveats
+- TALs carousel breaks when it has just one item.
