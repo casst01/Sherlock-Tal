@@ -1,9 +1,9 @@
 require.def("sampleapp/controllers/indexcontroller",
     [
         "antie/class",
-        "sampleapp/appui/widgets/frame"
+        "sampleapp/appui/frames/indexframe"
     ],
-    function(Class, Frame, DataSourceManager) {
+    function(Class, IndexFrame) {
         return Class.extend({
 
             init: function (args) {
@@ -13,28 +13,26 @@ require.def("sampleapp/controllers/indexcontroller",
 
             index: function () {
                 var self = this;
-                var frame = new Frame('indexFrame')
-                                .addComponentContainer('albumsContainer')
-                                .addComponentContainer('albumPhotosContainer');
+                var frame = new IndexFrame();
                 
-                frame.getComponentContainer('albumsContainer').addEventListener('databound', function() {
-                    frame.setActiveChildWidget(frame.getComponentContainer('albumsContainer'));
+                frame.getAlbumsContainer().addEventListener('databound', function() {
+                    frame.setActiveChildWidget(frame.getAlbumsContainer());
                 });
 
-                frame.getComponentContainer('albumsContainer').addEventListener('select', function(evt) {
+                frame.getAlbumsContainer().addEventListener('select', function(evt) {
                     var albumPhotosDataSource = self._dataSourceManager.get('albumphotos');
                     albumPhotosDataSource.setAlbumId(evt.target.id);
-                    frame.showComponent('albumPhotosContainer', "sampleapp/appui/components/facebook/albumphotoscarouselcomponent", { dataSource: albumPhotosDataSource });
+                    frame.getAlbumPhotosContainer().show("sampleapp/appui/components/facebook/albumphotoscarouselcomponent", { dataSource: albumPhotosDataSource });
                 });
 
-                frame.getComponentContainer('albumPhotosContainer').addEventListener('databound', function() {
-                    frame.setActiveChildWidget(frame.getComponentContainer('albumPhotosContainer'));
+                frame.getAlbumPhotosContainer().addEventListener('databound', function() {
+                    frame.setActiveChildWidget(frame.getAlbumPhotosContainer('albumPhotosContainer'));
                 });
 
                 this._application._rootWidget.appendChildWidget(frame);
 
                 var albumsDataSource = this._dataSourceManager.get('albums');
-                frame.showComponent('albumsContainer', "sampleapp/appui/components/facebook/albumscarouselcomponent", { dataSource: albumsDataSource });
+                frame.getAlbumsContainer().show("sampleapp/appui/components/facebook/albumscarouselcomponent", { dataSource: albumsDataSource });
             }
 
         });
