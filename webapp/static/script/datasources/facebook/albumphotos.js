@@ -14,14 +14,14 @@ require.def("sampleapp/datasources/facebook/albumphotos",
             },
 
             setAlbumId: function(albumId) {
+                console.log('setting album id', albumId);
                 this._albumId = albumId;
             },
 
             getUrl: function () {
-                this._fillUrlParams({
+                return this._fillUrlParams(this.url, {
                     albumId: this._albumId
-                })
-                return this.url;
+                });
             }
 
         });

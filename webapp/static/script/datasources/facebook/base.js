@@ -16,15 +16,16 @@ require.def("sampleapp/datasources/facebook/base",
                 return this.url;
             },
 
-            _fillUrlParams: function (params) {
+            _fillUrlParams: function (url, params) {
                 var matches = null;
-                while(matches = this._urlParamRegex.exec(this.url)) {
+                while(matches = this._urlParamRegex.exec(url)) {
                     var paramName = matches[0];
                     var sanitizedParamName = paramName.replace(':', '');
                     if(params[sanitizedParamName]) {
-                        this.url = this.url.replace(paramName, params[sanitizedParamName]);
+                        url = url.replace(paramName, params[sanitizedParamName]);
                     }
                 }
+                return url;
             }
 
         });
