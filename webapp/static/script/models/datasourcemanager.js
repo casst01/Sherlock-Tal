@@ -43,7 +43,7 @@ require.def("sampleapp/models/datasourcemanager",
 
             _loadData : function(callbacks, dataSourceId) {
               var dataSource = this._dataSources[dataSourceId];    
-              this._loadJSON(dataSource.url, callbacks.onSuccess);
+              this._loadJSON(dataSource.getUrl(), callbacks.onSuccess);
             },
 
             _loadJSON: function(url, callback) {

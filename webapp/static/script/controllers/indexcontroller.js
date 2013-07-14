@@ -21,8 +21,9 @@ require.def("sampleapp/controllers/indexcontroller",
                     frame.setActiveChildWidget(frame.getComponentContainer('albumsContainer'));
                 });
 
-                frame.getComponentContainer('albumsContainer').addEventListener('select', function() {
+                frame.getComponentContainer('albumsContainer').addEventListener('select', function(evt) {
                     var albumPhotosDataSource = self._dataSourceManager.get('albumphotos');
+                    albumPhotosDataSource.setAlbumId(evt.target.id);
                     frame.showComponent('albumPhotosContainer', "sampleapp/appui/components/facebook/albumphotoscarouselcomponent", { dataSource: albumPhotosDataSource });
                 });
 
@@ -32,8 +33,8 @@ require.def("sampleapp/controllers/indexcontroller",
 
                 this._application._rootWidget.appendChildWidget(frame);
 
-                var albumsDataSource = this._dataSourceManager.get('friends');
-                frame.showComponent('albumsContainer', "sampleapp/appui/components/facebook/friendscarouselcomponent", { dataSource: albumsDataSource });
+                var albumsDataSource = this._dataSourceManager.get('albums');
+                frame.showComponent('albumsContainer', "sampleapp/appui/components/facebook/albumscarouselcomponent", { dataSource: albumsDataSource });
             }
 
         });

@@ -13,7 +13,7 @@ require.def("sampleapp/models/facebookdatasourcemanager",
             _loadData : function(callbacks, dataSourceId) {
               var dataSource = this._dataSources[dataSourceId];    
               this._loadJSON(
-                dataSource.url + "?access_token=" + this._accessToken.token, 
+                dataSource.getUrl() + "?access_token=" + this._accessToken.token, 
                 callbacks.onSuccess
               );
             },
