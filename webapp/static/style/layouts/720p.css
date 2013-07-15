@@ -1,9 +1,31 @@
-#albumscarousel .listitem,
-#friendscarousel .listitem {
-	padding: 20px;
+/* Albums */
+#albumscarousel {
+	background: #3b5998;
 }
-#albumscarousel .listitem.active.focus,
-#friendscarousel .listitem.active.focus {
+
+.album {
+	padding:20px;
+	color: #fff;
+}
+.album.active {
+	background: #e7ebf2;
+	color: #898f9c;
+}
+.album.active.focus {
 	background: #fff;
-	color: #000;
+	color: #3b5998;
+	font-weight: bold;
+}
+
+.album .count {
+	margin-left: 10px;
+}
+
+/* AlbumPhotos */
+.albumphoto {
+	padding:20px;
+}
+.albumphoto .image {
+	width:300px;
+	overflow: hidden;
 }
