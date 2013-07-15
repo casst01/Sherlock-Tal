@@ -101,7 +101,7 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
 
 <!-- BODY -->
 
-<body style="background: #000;">
+<body>
 
 <!-- Add in device specific body (Plugins etc) -->
 <?php echo $antie->getDeviceBody($device_configuration_decoded); ?>

@@ -13,12 +13,15 @@ require.def("sampleapp/appui/widgets/facebook/album",
                 this.setDataItem(dataItem);
                 this.addClass('album');
                 this.appendChildWidget(new Label(dataItem.name));
-                this.appendChildWidget(new Image(id + 'photo', this._getCoverPhotoUrl(), { width:100, height: 100}));
+                this.appendChildWidget(this._createCountLabel(dataItem));
             },
 
-            _getCoverPhotoUrl: function () {
-                return 'https://graph.facebook.com/' + this.getDataItem().cover_photo + '/picture?width=100';
+            _createCountLabel: function(dataItem) {
+                var label = new Label('(' + dataItem.count + ')');
+                label.addClass('count');
+                return label;
             }
+
         });
     }
 );

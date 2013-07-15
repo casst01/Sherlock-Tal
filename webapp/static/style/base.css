@@ -7,7 +7,9 @@ body {
     height: 100%; 
     margin: 0;
     padding: 0;
-    color: #ffffff;
+    color: #000;
+    background: #e7ebf2; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* List widgets */
