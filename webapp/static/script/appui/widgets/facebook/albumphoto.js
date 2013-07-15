@@ -12,7 +12,7 @@ require.def("sampleapp/appui/widgets/facebook/albumphoto",
                 this._super(id);
                 this.setDataItem(dataItem);
                 this.addClass('albumphoto');
-                this.appendChildWidget(new Image(id + 'photo', this._getPhotoUrl(), { width:300, height: 300}));
+                this.appendChildWidget(new Image(id + 'photo', this._getPhotoUrl(), { height: 300 }));
             },
 
             _getPhotoUrl: function () {
