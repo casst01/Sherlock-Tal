@@ -1,20 +1,13 @@
 require.def("sampleapp/models/datasourcemanager",
     [
         "antie/class",
-        "antie/datasource",
-        "sampleapp/datasources/facebook/friends",
-        "sampleapp/datasources/facebook/albums",
-        "sampleapp/datasources/facebook/albumphotos"
+        "antie/datasource"
     ],
-    function(Class, DataSource, Friends, Albums, AlbumPhotos) {
+    function(Class, DataSource) {
         return Class.extend({
 
             init: function() {
-                this._dataSourceClasses = {
-                    'friends': Friends,
-                    'albums': Albums,
-                    'albumphotos': AlbumPhotos
-                };
+                this._dataSourceClasses = {};
                 this._dataSources = [];
             },
 
@@ -62,6 +55,12 @@ require.def("sampleapp/models/datasourcemanager",
               
                 xhr.open('GET', url, true);  
                 xhr.send(''); 
+            },
+
+            _addDataSourceClasses: function(classes) {
+                for(var key in classes) {
+                    this._dataSourceClasses[key] = classes[key];
+                }
             }
 
         });

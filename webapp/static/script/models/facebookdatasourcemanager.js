@@ -1,13 +1,22 @@
 require.def("sampleapp/models/facebookdatasourcemanager",
     [
-        "sampleapp/models/datasourcemanager"
+        "sampleapp/models/datasourcemanager",
+        "sampleapp/datasources/facebook/friends",
+        "sampleapp/datasources/facebook/albums",
+        "sampleapp/datasources/facebook/albumphotos"
     ],
-    function(DataSourceManager) {
+    function(DataSourceManager, Friends, Albums, AlbumPhotos) {
         return DataSourceManager.extend({
 
             init: function(args) {
                 this._super();
                 this._accessToken = args.accessToken;
+
+                this._addDataSourceClasses({
+                    'friends': Friends,
+                    'albums': Albums,
+                    'albumphotos': AlbumPhotos
+                });
             },
 
             _loadData : function(callbacks, dataSourceId) {
