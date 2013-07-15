@@ -56,9 +56,10 @@ Now that the code is checked out you will need to update `index.php` with your F
 / Passing Arguments to components for use in ComponentEvents
 / FacebookDataSourceManager to auto pass through accessToken as arg
 / Datasource not reloading after setParam()
-- Move facebook datsources from datasourcemanager to facebookdatasource manager
+/ Move facebook datsources from datasourcemanager to facebookdatasource manager
 - CSS + polish
-- Dummy FB Account for demo
+/ Dummy FB Account for demo
+- Simplify base state of project to just display list of friends perhaps?
 
 # What this base project doesnt do..
 - Deal with peristing access token
@@ -66,3 +67,8 @@ Now that the code is checked out you will need to update `index.php` with your F
 
 # Caveats
 - TALs carousel breaks when it has just one item.
+
+# Future improvements
+- FQL Support
+- Multiquery FQL
+- Parameterized FQL
