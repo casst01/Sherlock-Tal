@@ -11,6 +11,8 @@
 	5. Give it a Go 
 4. What's Going On?
 5. Where to Now ?
+	1. Creating your own Component
+	2. A More Detailed Example 
 6. Roadmap
 
 ## Overview
@@ -19,15 +21,20 @@ This is a simple project for consuming the [Facebook Graph API](https://develope
 As this is a base project, there are some things that it does not do for you, yet. These are outlined below.
 
 ## Whats in the Box?
+_TODO_
+
 Out of the box this app provides:
 
 * Basic OAuth authentication
 * Datasource Management
 * Very Basic routing
+* Frames
 
 ## Set Up
 
 ### Facebook App
+_TODO_
+
 To use the [Facebook Graph API](https://developers.facebook.com/docs/reference/api/) you will need to create a Facebook App to obtain an App ID
 
 ### Checkout the Code
@@ -51,14 +58,48 @@ Now that the code is checked out you will need to update `index.php` with your F
 For the vanilla checked out application, you wont need any permissions as it just displays a list of friends so just an App ID and URL will do.
 
 ### Set up a Virtual Host (Recommended)
+_TODO_
 
 ### Give it a Go
+_TODO_
 
 ## What's Going On ?
+_TODO_
+- sampleapp
+	- route checks if we have an access token, if not the FB object handles the rediect.
+	- if we have one, it is extracted from the url
+	- route is defaulted to index/index
+	- next a main controller is instantiated with some arguments (the application, and a datasource manager).
+	- route is called on the main controller and the rout object is passed to it.
+- maincontroller
+	- takes the route and determines which controller/action to call.
+	- the controller is instantiated and the action is called on the controller
+	- as we always default to index/index, we only deal with the index function of the index controller
+- indexcontroller
+	- index function creates an indexFrame and adds a component to one of the frames component containers.
+	- an event listener listens for the `dataound`event and then sets the componentContainer as focused.
+	
+At this stage the component is shown on the page and has focus.
+For more detiails on framework events checkout the [TAL Documentation](http://fmtvp.github.io/tal/)
 
 ## Where to Now?
+The vanilla checkout of this project displays a carousel containing a list of the users friends. Its pretty simple, but its consuming the Facebook Graph Api and presenting that data in a navigable TAL component.
+
+### Creating your own Component
+#### Datasource
+_TODO_
+#### Widget
+_TODO_
+#### Formatter
+_TODO_
+#### Component
+_TODO_
+
+### A More Detailed Example
+_TODO_
 
 ## Roadmap
+_TODO_
 - Solidify app structure
 - Routing - beyond just using index/index as it does now.
 - Frames
