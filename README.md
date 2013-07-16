@@ -70,6 +70,8 @@ Now that you have the code checked out, time to set up a vhost. As mentioned in 
 ### Give it a Go
 That's it! Hit the app in a browser, you will be redirected to Facebook to confirm permissions for the application, and then redirected back to the app, where you should see a list of your friends. 
 
+---
+
 ## What's Going On ?
 So, what's going on under the bonnet? Below is a very breif outline of what this project does in addition to what is already provided by the [TAL Framework](https://github.com/fmtvp/tal).
 
@@ -133,7 +135,7 @@ We also listen for the `beforerender` event where we set the datasource of compo
 Great, you have a component! The showing of components is handled by controllers. Each controller receives the `DatasourceManager` that it can use to get datasources. Displaying a component simply consists of getting the datasource and then calling `show` on a ComponentContainer in the frame and passing the component require path and an `args` object containing the datasource. 
 
 ### A More Detailed Example
-This project simply shows a single carousel of Friends. For a more advanced example, see the `PhotoAlbums` branch of this project.
+This project simply shows a single carousel of Friends. For a more advanced example, see the `PhotoAlbums` branch of this project. This deals with hadling a select event on a carousel and passing a parameter to the url of a datource before showing another component.
 
 
 ## Things to Note.
