@@ -14,7 +14,6 @@ require.def("sampleapp/datasources/facebook/albumphotos",
             },
 
             setAlbumId: function(albumId) {
-                console.log('setting album id', albumId);
                 this._albumId = albumId;
             },
 
