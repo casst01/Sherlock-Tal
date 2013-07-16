@@ -1,29 +1,43 @@
 # Facebook on TAL
 
+## Contents
+1. Overview
+2. What's in the Box?
+3. Set Up
+	1. Create your Facebook App
+	2. Checkout the Code
+	3. Configure App ID and URL
+	4. Set up Virtual Host (Recommended)
+	5. Give it a Go 
+4. What's Going On?
+5. Where to Now ?
+6. Roadmap
 
 ## Overview
 This is a simple project for consuming the [Facebook Graph API](https://developers.facebook.com/docs/reference/api/) using the [TAL Framework](https://github.com/fmtvp/tal). This document outlines how to get up and running with the project so you can start creating your own apps.
 
 As this is a base project, there are some things that it does not do for you, yet. These are outlined below.
 
-## Whats in the Box ?
+## Whats in the Box?
 Out of the box this app provides:
 
 * Basic OAuth authentication
 * Datasource Management
-* Basic routing
+* Very Basic routing
 
-## Getting Started
+## Set Up
 
 ### Facebook App
 To use the [Facebook Graph API](https://developers.facebook.com/docs/reference/api/) you will need to create a Facebook App to obtain an App ID
 
-### Grab the project code
+### Checkout the Code
+
+#### Grab the project code
 First things first, checkout the code for the project:
 
 	git clone https://github.com/casst01/tal_fb.git myapp
 
-### Grab the TAL Framework
+#### Grab the TAL Framework
 Next, navigate into your app directory and checout the [TAL Framework](https://github.com/fmtvp/tal):
 
 	cd myapp
@@ -31,8 +45,26 @@ Next, navigate into your app directory and checout the [TAL Framework](https://g
 	
 *Note: This must be checked out into a directory called `antie`. See the [TAL Documentation](http://fmtvp.github.io/tal/) for more details.*
 
-### Update your App ID and URL
+#### Configure App ID and URL
 Now that the code is checked out you will need to update `index.php` with your Facebook Application ID, the base url of your Facebook Application (this must match that defined in your Facebook Application control panel), and finally an array of permissions.
+
+For the vanilla checked out application, you wont need any permissions as it just displays a list of friends so just an App ID and URL will do.
+
+### Set up a Virtual Host (Recommended)
+
+### Give it a Go
+
+## What's Going On ?
+
+## Where to Now?
+
+## Roadmap
+- Solidify app structure
+- Routing - beyond just using index/index as it does now.
+- Frames
+- FQL Support
+- Multiquery FQL
+- Parameterized FQL
 
 ---
 ---
@@ -57,7 +89,6 @@ Now that the code is checked out you will need to update `index.php` with your F
 / FacebookDataSourceManager to auto pass through accessToken as arg
 / Datasource not reloading after setParam()
 / Move facebook datsources from datasourcemanager to facebookdatasource manager
-- CSS + polish
 / Dummy FB Account for demo
 - Simplify base state of project to just display list of friends perhaps?
 
@@ -66,9 +97,4 @@ Now that the code is checked out you will need to update `index.php` with your F
 - Deal with access token expiry
 
 # Caveats
-- TALs carousel breaks when it has just one item.
-
-# Future improvements
-- FQL Support
-- Multiquery FQL
-- Parameterized FQL
+- TALs carousel breaks when it has just one item. This is only when it is set to wrap, as it tries to create the clone items. Wrape mode none fixes this.
