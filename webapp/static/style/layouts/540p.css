@@ -29,3 +29,33 @@
 	width:300px;
 	overflow: hidden;
 }
+
+/* Friends */
+#friendscarousel {
+	background: #FFF;
+	border-bottom: 1px solid #ddd;
+}
+.friend {
+	margin: 20px;
+	border: 1px solid #e9eaed;
+}
+.friend span,
+.friend .image {
+	display: inline-block;
+}
+.friend span {
+	color: #3b5998;
+	font-size: 12px;
+	font-weight: bold;
+}
+.friend .image {
+	width:75px;
+	margin-right: 20px;
+}
+
+.friend.active.focus {
+	background: #3b5998;
+}
+.friend.active.focus span {
+	color: #e9eaed;
+}

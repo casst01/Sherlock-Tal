@@ -12,12 +12,12 @@ require.def("sampleapp/appui/widgets/facebook/friend",
                 this._super(id);
                 this.setDataItem(dataItem);
                 this.addClass('friend');
+                this.appendChildWidget(new Image(id + 'photo', this._getProfileImageUrl(), { height: 75 }));
                 this.appendChildWidget(new Label(dataItem.name));
-                this.appendChildWidget(new Image(id + 'photo', this._getProfileImageUrl(), { width:100, height: 100}));
             },
 
             _getProfileImageUrl: function () {
-                return 'https://graph.facebook.com/' + this.getDataItem().id + '/picture?width=100';
+                return 'https://graph.facebook.com/' + this.getDataItem().id + '/picture?type=square';
             }
         });
     }
