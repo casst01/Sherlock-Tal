@@ -15,24 +15,14 @@ require.def("sampleapp/controllers/indexcontroller",
                 var self = this;
                 var frame = new IndexFrame();
                 
+                this._application._rootWidget.appendChildWidget(frame);
+
                 frame.getAlbumsContainer().addEventListener('databound', function() {
                     frame.setActiveChildWidget(frame.getAlbumsContainer());
                 });
 
-                frame.getAlbumsContainer().addEventListener('select', function(evt) {
-                    var albumPhotosDataSource = self._dataSourceManager.get('albumphotos');
-                    albumPhotosDataSource.setAlbumId(evt.target.id);
-                    frame.getAlbumPhotosContainer().show("sampleapp/appui/components/facebook/albumphotoscarouselcomponent", { dataSource: albumPhotosDataSource });
-                });
-
-                frame.getAlbumPhotosContainer().addEventListener('databound', function() {
-                    frame.setActiveChildWidget(frame.getAlbumPhotosContainer('albumPhotosContainer'));
-                });
-
-                this._application._rootWidget.appendChildWidget(frame);
-
-                var albumsDataSource = this._dataSourceManager.get('albums');
-                frame.getAlbumsContainer().show("sampleapp/appui/components/facebook/albumscarouselcomponent", { dataSource: albumsDataSource });
+                var albumsDataSource = this._dataSourceManager.get('friends');
+                frame.getAlbumsContainer().show("sampleapp/appui/components/facebook/friendscarouselcomponent", { dataSource: albumsDataSource });
             }
 
         });
