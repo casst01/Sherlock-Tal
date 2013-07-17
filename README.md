@@ -135,7 +135,7 @@ We also listen for the `beforerender` event where we set the datasource of compo
 Great, you have a component! The showing of components is handled by controllers. Each controller receives the `DatasourceManager` that it can use to get datasources. Displaying a component simply consists of getting the datasource and then calling `show` on a ComponentContainer in the frame and passing the component require path and an `args` object containing the datasource. 
 
 ### A More Detailed Example
-This project simply shows a single carousel of Friends. For a more advanced example, see the `PhotoAlbums` branch of this project. This deals with hadling a select event on a carousel and passing a parameter to the url of a datource before showing another component.
+For a more detailed example, checkout the `Albums` and `AlbumPhotos` components. These can be combined together using [TAL Events]() to create a photo album browser. The `AlbumPhotos` datasource also utilizes a parameterized url to specify the album id from which to grab the photos.
 
 
 ## Things to Note.
