@@ -13,7 +13,7 @@ require.def('sampleapp/appui/sampleapp',
 			
 			init: function (appDiv, styleDir, imgDir, callback) {
 				this._super(appDiv, styleDir, imgDir, callback);
-				this._fb = new FB('407261462723217', 'http://app1.tal.com', ['user_photos']);
+				this._fb = new FB('362536663873876', 'http://fbontal.herokuapp.com', ['user_photos']);
 
 				this._rootContainer = new Container('app');
 				this._rootContainer.outputElement = appDiv;
