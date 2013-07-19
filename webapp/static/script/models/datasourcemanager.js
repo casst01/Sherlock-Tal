@@ -39,13 +39,6 @@ require.def("sampleapp/models/datasourcemanager",
               this._loadJSON(dataSource.getUrl(), callbacks.onSuccess);
             },
 
-            _loadJSON: function(url, callback) {
-                this._xhrRequest(url, function(xhr){
-                  var json = JSON.parse(xhr.response);
-                  callback(json.data);
-                });
-            },
-
             _xhrRequest: function(url, callback) {
                 xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {  

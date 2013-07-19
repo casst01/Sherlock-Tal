@@ -27,6 +27,13 @@ require.def("sampleapp/models/facebookdatasourcemanager",
               );
             },
 
+            _loadJSON: function(url, callback) {
+                this._xhrRequest(url, function(xhr){
+                  var json = JSON.parse(xhr.response);
+                  callback(json.data);
+                });
+            }
+
         });
     }
 );
