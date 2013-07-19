@@ -1,10 +1,10 @@
 require.def("sampleapp/datasources/facebook/friends",
     [
         "antie/class",
-        "sampleapp/datasources/facebook/base"
+        "sampleapp/datasources/datasourcebase"
     ],
-    function(Class, FacebookDataSourceBase) {
-        return FacebookDataSourceBase.extend({
+    function(Class, DataSourceBase) {
+        return DataSourceBase.extend({
 
             url: 'https://graph.facebook.com/me/friends',
 
