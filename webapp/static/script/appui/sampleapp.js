@@ -30,6 +30,7 @@ require.def('sampleapp/appui/sampleapp',
 						this.getDevice().setCurrentRoute(['index', 'index']);
 					} else {
 						this._fb.redirect();
+						return;
 					}
 				}
 
