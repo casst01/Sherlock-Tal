@@ -35,8 +35,12 @@ require.def("sampleapp/models/datasourcemanager",
             },
 
             _loadData : function(callbacks, dataSourceId) {
-              var dataSource = this._dataSources[dataSourceId];    
-              this._loadJSON(dataSource.getUrl(), callbacks.onSuccess);
+              var dataSource = this._dataSources[dataSourceId];
+              if(dataSource.useMock) {
+                callbacks.onSuccess(dataSource.mockData);
+              } else {
+                this._loadJSON(dataSource.getUrl(),callbacks.onSuccess);
+              }
             },
 
             _xhrRequest: function(url, callback) {
@@ -48,6 +52,13 @@ require.def("sampleapp/models/datasourcemanager",
               
                 xhr.open('GET', url, true);  
                 xhr.send(''); 
+            },
+
+            _loadJSON: function(url, callback) {
+              this._xhrRequest(url, function(xhr){
+                var json = JSON.parse(xhr.response);
+                callback(json.data);
+              });
             },
 
             _addDataSourceClasses: function(classes) {

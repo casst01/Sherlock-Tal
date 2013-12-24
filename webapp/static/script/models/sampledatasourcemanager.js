@@ -12,25 +12,6 @@ require.def("sampleapp/models/sampledatasourcemanager",
               this._addDataSourceClasses({
                   'sample': SampleDataSource
               });
-          },
-
-          _loadData : function(callbacks, dataSourceId) {
-              var dataSource = this._dataSources[dataSourceId];
-              if(dataSource.useMock) {
-                callbacks.onSuccess(dataSource.mockData);
-              } else {
-                this._loadJSON(
-                  dataSource.getUrl(),
-                  callbacks.onSuccess
-                );
-              }
-          },
-
-          _loadJSON: function(url, callback) {
-              this._xhrRequest(url, function(xhr){
-                  var json = JSON.parse(xhr.response);
-                  callback(json.data);
-              });
           }
 
       });
