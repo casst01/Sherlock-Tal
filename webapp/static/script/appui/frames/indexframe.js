@@ -12,19 +12,12 @@ require.def("sampleapp/appui/frames/indexframe",
             },
 
             _addComponentContainers: function () {
-                this._albumsContainer = new ComponentContainer('albumsContainer');
-                this._albumPhotosContainer = new ComponentContainer('albumPhotosContainer');
-
-                this.appendChildWidget(this._albumsContainer);
-                this.appendChildWidget(this._albumPhotosContainer);
+                this._sampleContainer = new ComponentContainer('sampleContainer');
+                this.appendChildWidget(this._sampleContainer);
             },
 
-            getAlbumsContainer: function () {
-                return this._albumsContainer;
-            },
-
-            getAlbumPhotosContainer: function () {
-                return this._albumPhotosContainer;
+            getSampleContainer: function () {
+                return this._sampleContainer;
             }
 
         });

@@ -16,13 +16,8 @@ require.def("sampleapp/controllers/indexcontroller",
                 var frame = new IndexFrame();
                 
                 this._application._rootWidget.appendChildWidget(frame);
-
-                frame.getAlbumsContainer().addEventListener('databound', function() {
-                    frame.setActiveChildWidget(frame.getAlbumsContainer());
-                });
-
-                var albumsDataSource = this._dataSourceManager.get('friends');
-                frame.getAlbumsContainer().show("sampleapp/appui/components/facebook/friendscarouselcomponent", { dataSource: albumsDataSource });
+                var ds = this._dataSourceManager.get('sample');
+                frame.getSampleContainer().show("sampleapp/appui/components/samplecarouselcomponent", { dataSource: ds });
             }
 
         });

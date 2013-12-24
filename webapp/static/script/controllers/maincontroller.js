@@ -37,7 +37,7 @@ require.def("sampleapp/controllers/maincontroller",
 
             _sanitizeRoute: function (route) {
                 var params = route;
-                if(route.length <= 0) {
+                if(route.length <= 0 || route[0] === '') {
                     params = ['index', 'index'];
                 }
 
