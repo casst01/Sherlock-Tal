@@ -1,19 +1,21 @@
 require.def("sampleapp/appui/components/questioncomponent",
   [
       "antie/widgets/component",
-      "antie/widgets/list",
-      "sampleapp/appui/formatters/samplewidgetformatter"
+      "antie/widgets/verticallist",
+      "sampleapp/appui/formatters/questionformatter",
+      "sampleapp/appui/widgets/answerwidget",
+      "antie/events/event"
 
   ],
-  function (Component, List, SampleWidgetFormatter) {
+  function (Component, VerticalList, QuestionFormatter, AnswerWidget, Event) {
       return Component.extend({
           init: function() {
               this._super("questionComponent");
               this._addEventListeners();
 
-              this._carousel = new List(
+              this._carousel = new VerticalList(
                 "question",
-                new SampleWidgetFormatter()
+                new QuestionFormatter()
               );
 
               this.appendChildWidget(this._carousel);
@@ -24,6 +26,9 @@ require.def("sampleapp/appui/components/questioncomponent",
               this.addEventListener("beforerender", function(ev) {
                   self._onBeforeRender(ev);
               });
+              this.addEventListener("select", function(ev) {
+                self._onAnswerSelected(ev);
+              });
               this.addEventListener('focus', self._onFocus);
           },
 
@@ -33,6 +38,14 @@ require.def("sampleapp/appui/components/questioncomponent",
 
           _onFocus: function(ev) {
               ev.stopPropagation();
+          },
+
+          _onAnswerSelected: function(ev) {
+            if(ev.target instanceof AnswerWidget) {
+              var event = new Event("answerSelected");
+              event.target = ev.target;
+              this.broadcastEvent(event);
+            }
           }
 
       });

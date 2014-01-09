@@ -16,7 +16,7 @@ require.def("sampleapp/controllers/indexcontroller",
                 var frame = new QuestionFrame();
                 
                 this._application._rootWidget.appendChildWidget(frame);
-                var ds = this._dataSourceManager.get('sample');
+                var ds = this._dataSourceManager.get('question');
                 frame.getQuestionContainer().show("sampleapp/appui/components/questioncomponent", { dataSource: ds });
             }
 

@@ -8,8 +8,8 @@ body {
     margin: 0;
     padding: 0;
     color: #000;
-    background: #e7ebf2; 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #000000;
 }
 
 /* List widgets */
@@ -82,4 +82,116 @@ body {
     width: 1920px;
     height: 1080px;
     /*background-image: url(some/image/url_1080.png); */
+}
+
+#app {
+    width: 1280px;
+    height: 720px;
+    background-color: #f1f1f1;
+    margin: 0 auto;
+}
+.title {
+    color: white;
+    width: 976px;
+    background-color: #005361;
+    min-height: 100px;
+    font-size: 42px;
+    margin: 0 auto;
+    margin-top: 16px;
+    padding: 16px;
+}
+
+
+.answer-container {
+    margin: 0 auto;
+    width: 1008px;
+}
+.answer {
+    background-color: #005361;
+    position: relative;
+    margin-top: 16px;
+    width: 496px;
+    height: 230px;
+    overflow: hidden;
+    display: inline-block;
+}
+.answer .label {
+    background-color: inherit;
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    color: white;
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    line-height: 50px;
+}
+.answer.active .label {
+    color: #333333;
+
+}
+
+.answer .label:before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: -34px;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background-color: inherit;
+    -webkit-transform: skew(0deg,8deg);
+    opacity: 0.8;
+}
+
+.answer:nth-child(odd) {
+    margin-right: 16px;
+}
+
+.answer.active.focus {
+    background-color: #2edfd2;
+}
+
+.answer.incorrect,
+.answer.active.focus.incorrect,
+.grid .active.focus.incorrect{
+    outline: 3px solid #d00a0b;
+    background-color: #d00a0b;
+}
+
+.answer.correct,
+.answer.active.focus.correct,
+.grid .active.focus.correct{
+    background-color: #9ee52c;
+    outline: 3px solid #9ee52c;
+
+}
+
+.grid .active.focus {
+    color: #333333;
+    outline: 3px solid #2edfd2;
+}
+
+.answer.faded {
+    opacity: 0.5;
+}
+
+.next-label {
+    display: block;
+    width: 240px;
+    height: 48px;
+    color: white;
+    font-weight: bold;
+    line-height: 48px;
+    text-align: center;
+    margin: 16px auto 0;
+    background-color: #005361;
+}
+
+.active.focus > .next-label {
+    color: #2edfd2;
+    outline: 3px solid #2edfd2;
+
 }

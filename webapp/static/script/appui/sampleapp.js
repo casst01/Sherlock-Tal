@@ -3,10 +3,10 @@ require.def('sampleapp/appui/sampleapp',
 		'antie/application',
 		'antie/widgets/container',
 		'sampleapp/controllers/maincontroller',
-		'sampleapp/models/sampledatasourcemanager'
+		'sampleapp/models/sherlockdatasourcemanager'
 	],
 
-	function(Application, Container, MainController, DataSourceManager) {
+	function(Application, Container, MainController, SherlockDataSourceManager) {
 
 		return Application.extend({
 			
@@ -22,9 +22,9 @@ require.def('sampleapp/appui/sampleapp',
 
 			route: function(route) {
 				var args = {
-					application: this,
-					dataSourceManager: new DataSourceManager()
-				}
+          application: this,
+          dataSourceManager: new SherlockDataSourceManager()
+        };
 				this._mainController = new MainController(args);
 				this._mainController.route(this.getDevice().getCurrentRoute());
 				this.ready();
