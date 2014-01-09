@@ -1,18 +1,18 @@
-require.def("sampleapp/appui/components/samplecarouselcomponent",
+require.def("sampleapp/appui/components/questioncomponent",
   [
       "antie/widgets/component",
-      "antie/widgets/horizontalcarousel",
+      "antie/widgets/list",
       "sampleapp/appui/formatters/samplewidgetformatter"
 
   ],
-  function (Component, HorizontalCarousel, SampleWidgetFormatter) {
+  function (Component, List, SampleWidgetFormatter) {
       return Component.extend({
           init: function() {
-              this._super("samplecarouselcomponent");
+              this._super("questionComponent");
               this._addEventListeners();
 
-              this._carousel = new HorizontalCarousel(
-                "samplecarousel",
+              this._carousel = new List(
+                "question",
                 new SampleWidgetFormatter()
               );
 

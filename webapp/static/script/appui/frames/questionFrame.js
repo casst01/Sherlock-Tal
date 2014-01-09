@@ -12,7 +12,7 @@ require.def("sampleapp/appui/frames/questionframe",
       },
 
       _addComponentContainers: function () {
-        this._questionContainer = new ComponentContainer('questionContainer');
+        this._questionContainer = new ComponentContainer('questionComponentContainer');
         this.appendChildWidget(this._questionContainer);
       },
 

@@ -17,7 +17,7 @@ require.def("sampleapp/controllers/indexcontroller",
                 
                 this._application._rootWidget.appendChildWidget(frame);
                 var ds = this._dataSourceManager.get('sample');
-                frame.getQuestionContainer().show("sampleapp/appui/components/samplecarouselcomponent", { dataSource: ds });
+                frame.getQuestionContainer().show("sampleapp/appui/components/questioncomponent", { dataSource: ds });
             }
 
         });
